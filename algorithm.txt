@@ -1,15 +1,30 @@
+//this method take the number of the month as an input and return thr name of that month
 getTheNameOfTheMonth( take the number of the month as an input) {
             months >>> list of names of  months of the year >> [January, February, March, April, May, June, July, August, September, October, November, December]
             return the name of the month that equal to the number of month
 }
 
 
+
+
+
+
+
+
+//this method take a day and month's number and a year and reuten the index of the first day in the month
 startDay(take as input the day and number of month and the year) {
             list_ = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4]
             if month les than  3 , then subtract from the year the number of month
-            return the floor of this equation that calcuate the start day of the month >>> ((year + floor(year / 4) - floor(year / 100) + floor(year / 400) + list_[month - 1] + day) % 7);
+            return the floor of this equation that calcuate the start day of the month  :
+                >>> ((year + floor(year / 4) - floor(year / 100) + floor(year / 400) + list_[month - 1] + day) % 7);
         }
 
+
+
+
+
+
+//this method take month's number as an input and return the number of days in that month.
 howManyDaysInTheMonth(take the number of the month and the year as an input) {
         **check if the number of the month is one of these months (3/5/7/8/10/12) , then return that the number of days in that month is 31 day.
 
@@ -20,6 +35,13 @@ howManyDaysInTheMonth(take the number of the month and the year as an input) {
         **if the number of the month is not one of these (3/5/7/8/10/12)  and not (2):
             -that means that the number of the days of the month is 30 day
         }
+
+
+
+
+
+
+
 //this method take a year as an input and return if the input year is a leap year or not
 isLeap(takes a year as input) {
             **if the year is Divisible by 4 :
@@ -35,5 +57,21 @@ isLeap(takes a year as input) {
                 -then return that the input year is not a leap year 
             
         }
+
+
+
+
+
+
+//this method take a month's number and a year as an input and return the calnder of that month in that year .
+calender(take a month's number and a year as an input) {
+
+            output_clander <<< "<pre>";
+
+            firstDay << get the index of the first day <<<< startDay()
+
+            //the rest of the code is just for printing the calender
+    }
+
 
 
