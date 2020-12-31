@@ -1,0 +1,39 @@
+getTheNameOfTheMonth( take the number of the month as an input) {
+            months >>> list of names of  months of the year >> [January, February, March, April, May, June, July, August, September, October, November, December]
+            return the name of the month that equal to the number of month
+}
+
+
+startDay(take as input the day and number of month and the year) {
+            list_ = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4]
+            if month les than  3 , then subtract from the year the number of month
+            return the floor of this equation that calcuate the start day of the month >>> ((year + floor(year / 4) - floor(year / 100) + floor(year / 400) + list_[month - 1] + day) % 7);
+        }
+
+howManyDaysInTheMonth(take the number of the month and the year as an input) {
+        **check if the number of the month is one of these months (3/5/7/8/10/12) , then return that the number of days in that month is 31 day.
+
+        **but if the number of the month is 2 , that requid us to check if this year is a leap year or not:
+            -now if the year is a leap year that means that the number of days of input month equal 29 day , .
+            -but if not leap year that means that the number days of the month is 28 day
+
+        **if the number of the month is not one of these (3/5/7/8/10/12)  and not (2):
+            -that means that the number of the days of the month is 30 day
+        }
+//this method take a year as an input and return if the input year is a leap year or not
+isLeap(takes a year as input) {
+            **if the year is Divisible by 4 :
+                -then check if the year is not Divisible on 100 : 
+                    -if true then return that the input year is a leap year 
+
+                -else if year Divisible on  400 :
+                    -then return that the input year is a leap year 
+
+                -else :
+                    -then return that the input year is not a leap year 
+            **else (the year is not Divisible on 4):
+                -then return that the input year is not a leap year 
+            
+        }
+
+

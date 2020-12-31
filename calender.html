@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://img.icons8.com/ios-filled/50/000000/time.png">
+    <title>Calnder Project</title>
+
+</head>
+
+<style>
+    body {
+        background-image: url('https://static.vitra.com/media/asset/1947747/storage/v_fullbleed_1440x/28859025.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position-x: center;
+        background-position-y: bottom;
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.8);
+        background-blend-mode: lighten;
+
+    }
+
+    div {
+        display: grid;
+        justify-content: center;
+
+    }
+
+    pre {
+        background-color: rgba(255, 255, 255);
+        ;
+        font-size: x-large;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+</style>
+
+<body>
+    <div>
+        <form action="">
+            <label for="month">month</label>
+            <input type="number" name="month" id="month">
+            &nbsp;&nbsp;&nbsp;
+            <label for="year">year</label>
+            <input type="number" name="year" id="year">
+            <input type="submit" id="sub">
+        </form>
+    </div>
+
+    <div class="m">
+
+    </div>
+    <script>
+        document.querySelector("form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            let year = document.querySelector("#year").value;
+            let month = document.querySelector("#month").value;
+            if (year && month) {
+                document.querySelector("body").style.backgroundColor = " rgba(255, 255, 255, 0.8)";
+                document.querySelector(".m").innerHTML = calender(month, year);
+            }
+
+
+        })
+
+        function getTheNameOfTheMonth(month) {
+            let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            return (months[month]);
+        }
+
+        function startDay(day, month, year) {
+
+            let list_ = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
+            if (month < 3) {
+                year -= month;
+
+            }
+            return Math.floor((year + Math.floor(year / 4) - Math.floor(year / 100) + Math.floor(year / 400) + list_[month - 1] + day) % 7);
+        }
+
+        function howManyDaysInTheMonth(month, year) {
+            
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+            return 31;
+
+        } else if (month == 2) {
+            if (isLeap(year)) {
+                return 29;
+
+            } else {
+                return 28;
+            }
+
+        } else {
+
+            return 30;
+        }
+
+        }
+        function isLeap(year) {
+            if (year % 4 == 0) {
+                if (year % 100 != 0) {
+                    return true;
+
+            } else if (year % 400 == 0) {
+                return true;
+
+            } else {
+                return false;
+            }
+
+        } else {
+            return false;
+        }
+        }
+
+        function calender(month, year) {
+
+            let output_clander = "<pre>";
+
+            let daysOfTheMonth;
+
+            let firstDay = startDay(1, 1, year);
+
+            for (let i = 0; i < month; i++) {
+                daysOfTheMonth = howManyDaysInTheMonth(i+1, year);
+
+                
+                
+                if (i == month - 1) {
+                    output_clander +="<h4 style=\"text-align: center\">"
+                    output_clander += getTheNameOfTheMonth(i) + " " + year
+                    output_clander += "</h4>"
+                }
+
+                if (i == month - 1) {
+                    output_clander += (" Sun Mon Tue Wed Thu Fri Sat\n ");
+                }
+                
+
+                let counter = 0;
+                for (let j = 0; j < firstDay; j++) {
+                    if (i == month - 1) {
+                        output_clander += ("    ");
+                    }
+                    counter++;
+                    
+                }
+
+                for (let j = 1; j <= daysOfTheMonth; j++) {
+                    if (j <= 9) {
+                        if (i == month - 1) {
+                            output_clander += (" " + j + "  ");
+                        }
+
+                    }
+                    if (j > 9) {
+                        if (i == month - 1) {
+                            output_clander += (" " + j + " ");
+                        }
+
+                    }
+
+                    if (++counter > 6) {
+                        counter = 0;
+                        if (i == month - 1) {
+                            output_clander += ("\n ");
+                        }
+                    }
+                }
+
+                if (i == month - 1) {
+                    output_clander += ("\n");
+                }
+
+                firstDay = counter;
+
+            }
+            output_clander += "\n</pre>";
+            return output_clander;
+        }
+    </script>
+</body>
+
+</html>
